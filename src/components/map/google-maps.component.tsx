@@ -37,7 +37,7 @@ const GoogleMapsComponent = () => {
             {!isLoaded ? (
                 <div></div>
             ) : (<div>
-                <button>LOL</button>
+                <button>Test</button>
             </div>)}
         </div>
     );

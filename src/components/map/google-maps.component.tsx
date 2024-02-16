@@ -3,6 +3,7 @@ import {GoogleMap, useLoadScript} from "@react-google-maps/api";
 import {config} from "../../config";
 import LoaderMapComponent from "./loader-map.component";
 import MarkersViewComponent from "./markers-view.component";
+import {getRandom, getRandomRange} from "../../shared/utils/random";
 
 const GoogleMapsComponent = () => {
     const { isLoaded } = useLoadScript({
@@ -18,6 +19,12 @@ const GoogleMapsComponent = () => {
             setMarker([...markers, addingMark]);
             setCenter(addingMark);
         }
+    }
+
+    const setRandomMarker = () => {
+        const randomLat = getRandomRange(-90, 90);
+        const randomLng = getRandomRange(-180, 180);
+        setCenter({lat: randomLat, lng: randomLng});
     }
 
     return (
@@ -37,7 +44,7 @@ const GoogleMapsComponent = () => {
             {!isLoaded ? (
                 <div></div>
             ) : (<div>
-                <button>Test</button>
+                <button onClick={() => setRandomMarker()}>Random</button>
             </div>)}
         </div>
     );
